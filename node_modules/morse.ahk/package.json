@@ -1,0 +1,28 @@
+{
+	"name": "morse.ahk",
+	"version": "0.1.0",
+	"description": "A simple Morse code library for AutoHotkey",
+	"main": "export.ahk",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Chunjee/morse.ahk.git"
+	},
+	"keywords": [
+		"ahk",
+		"morse",
+		"morsecode"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"unit-testing.ahk": "github:chunjee/unit-testing.ahk"
+	},
+	"author": "Shawn Brooker",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Chunjee/morse.ahk/issues"
+	},
+	"homepage": "https://chunjee.github.io/morse.ahk"
+}
