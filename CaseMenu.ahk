@@ -1,4 +1,4 @@
-﻿; ctrl+capslock to show text case change menu 
+; ctrl+capslock to show text case change menu 
 
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -21,11 +21,11 @@ Menu Case, Add, &aLt cApS case, CCase ; 6
 Menu Case, Add, &Stop. Case., CCase ; 7
 Menu Case, Add, &Reverse, CCase ; 8
 Menu Case, Add ; 9  -----> Line Break
-Menu Case, Add, &Morse, CCase ; 10
-Menu Case, Add, &Un-Morse, CCase ; 11
-Menu Case, Add, &Calculate, CCase ; 12
-Menu Case, Add, &Translate, CCase ; 13
-
+   Menu Utilities, Add, &Morse, MenuHandler ; 1
+   Menu Utilities, Add, &Un-Morse, MenuHandler ; 2
+   Menu Utilities, Add, &Calculate, MenuHandler ; 3
+   Menu Utilities, Add, &Translate, MenuHandler ; 4
+Menu Case, Add, Utilities, :Utilities ; 10
 
 ^CapsLock::
    GetText(TempText)
@@ -77,60 +77,62 @@ CCase:
       StringReplace, TempText, Temp2, % Chr(29), `r`n, All
       PutText(TempText)
    }
-   Else If (A_ThisMenuItemPos = 10)
+Return
+
+MenuHandler:
+   If (A_ThisMenuItemPos = 1)
    {
       morse := new morse()
       result := morse.encode(TempText)
       TempText := result
       PutText(TempText)
    }
-   Else If (A_ThisMenuItemPos = 11)
+   Else If (A_ThisMenuItemPos = 2)
    {
       global result2
       morse := new morse()
       result2 := morse.decode(TempText)
       MsgBox, 0,, %result2%
    }
-   Else If (A_ThisMenuItemPos = 12)
+   Else If (A_ThisMenuItemPos = 3)
    {
       CompiledExpression := ExprCompile(TempText)
       TempText := ExprEval(CompiledExpression)
       PutText(TempText)
    }
-   Else If (A_ThisMenuItemPos = 13)
+   Else If (A_ThisMenuItemPos = 4)
    {
       run, https://translate.google.com/?sl=auto&tl=en&text=%TempText%&op=translate
    }
-Return
 
-; Handy function.
-; Copies the selected text to a variable while preserving the clipboard.
-GetText(ByRef MyText = "")
-{
-   SavedClip := ClipboardAll
-   Clipboard =
-   Send ^c
-   ClipWait 0.5
-   If ERRORLEVEL
+   ; Handy function.
+   ; Copies the selected text to a variable while preserving the clipboard.
+   GetText(ByRef MyText = "")
    {
+      SavedClip := ClipboardAll
+      Clipboard =
+      Send ^c
+      ClipWait 0.5
+      If ERRORLEVEL
+      {
+         Clipboard := SavedClip
+         MyText =
+         Return
+      }
+      MyText := Clipboard
       Clipboard := SavedClip
-      MyText =
+      Return MyText
+   }
+
+   ; Pastes text from a variable while preserving the clipboard.
+   PutText(MyText)
+   {
+      SavedClip := ClipboardAll 
+      Clipboard = ; For better compatability
+      Sleep 20 ; with Clipboard History
+      Clipboard := MyText
+      Send ^v
+      Sleep 100
+      Clipboard := SavedClip
       Return
    }
-   MyText := Clipboard
-   Clipboard := SavedClip
-Return MyText
-}
-
-; Pastes text from a variable while preserving the clipboard.
-PutText(MyText)
-{
-   SavedClip := ClipboardAll 
-   Clipboard = ; For better compatability
-   Sleep 20 ; with Clipboard History
-   Clipboard := MyText
-   Send ^v
-   Sleep 100
-   Clipboard := SavedClip
-Return
-}
