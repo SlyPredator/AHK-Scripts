@@ -7,7 +7,9 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 #NoTrayIcon
 #Include %A_ScriptDir%\node_modules
 #Include morse.ahk\export.ahk
-#include %A_ScriptDir%\Dynamic Expressions.ahk
+#Include %A_ScriptDir%\Dynamic Expressions.ahk
+#Include %A_ScriptDir%\icons
+
 ExprInit()
 
 GroupAdd All
@@ -26,17 +28,17 @@ Menu Utilities, Add, &Calculate, MenuHandler ; 3
 Menu Utilities, Add, &Translate, MenuHandler ; 4
 Menu Case, Add, Utilities, :Utilities ; 9
 
-Menu, Case, Icon, &UPPERCASE, D:\Icons\uppercase16.png,, 0
-Menu, Case, Icon, &lowercase, D:\Icons\lowercase16.png,, 0
-Menu, Case, Icon, &Title Case, D:\Icons\titlecase16.png,, 0
-Menu, Case, Icon, &Reverse, D:\Icons\reverse.png,, 0
-Menu, Case, Icon, &aLt cApS case, D:\Icons\alternate.png,, 0
-Menu, Case, Icon, &Stop. Case., D:\Icons\period.png,, 0
-Menu, Case, Icon, Utilities, D:\Icons\utilities.png,, 0
-Menu, Utilities, Icon, &Morse, D:\Icons\morse-code.png,, 0
-Menu, Utilities, Icon, &Un-Morse, D:\Icons\english.png,, 0
-Menu, Utilities, Icon, &Calculate, D:\Icons\calculator.png,, 0
-Menu, Utilities, Icon, &Translate, D:\Icons\translate.png,, 0
+Menu, Case, Icon, &UPPERCASE, icons\uppercase16.png,, 0
+Menu, Case, Icon, &lowercase, icons\lowercase16.png,, 0
+Menu, Case, Icon, &Title Case, icons\titlecase16.png,, 0
+Menu, Case, Icon, &Reverse, icons\reverse.png,, 0
+Menu, Case, Icon, &aLt cApS case, icons\alternate.png,, 0
+Menu, Case, Icon, &Stop. Case., icons\period.png,, 0
+Menu, Case, Icon, Utilities, icons\utilities.png,, 0
+Menu, Utilities, Icon, &Morse, icons\morse-code.png,, 0
+Menu, Utilities, Icon, &Un-Morse, icons\english.png,, 0
+Menu, Utilities, Icon, &Calculate, icons\calculator.png,, 0
+Menu, Utilities, Icon, &Translate, icons\translate.png,, 0
 
 ^CapsLock::
    GetText(TempText)
