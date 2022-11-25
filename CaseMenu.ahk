@@ -4,7 +4,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance force
-; #NoTrayIcon
+#NoTrayIcon
 #Include %A_ScriptDir%\node_modules
 #Include morse.ahk\export.ahk
 #Include %A_ScriptDir%\Dynamic Expressions.ahk
