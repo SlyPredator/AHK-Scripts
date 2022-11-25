@@ -4,7 +4,7 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance force
-#NoTrayIcon
+; #NoTrayIcon
 #Include %A_ScriptDir%\node_modules
 #Include morse.ahk\export.ahk
 #Include %A_ScriptDir%\Dynamic Expressions.ahk
@@ -13,6 +13,12 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 ExprInit()
 
 GroupAdd All
+
+uxtheme := DllCall("GetModuleHandle", "str", "uxtheme", "ptr")
+SetPreferredAppMode := DllCall("GetProcAddress", "ptr", uxtheme, "ptr", 135, "ptr")
+FlushMenuThemes := DllCall("GetProcAddress", "ptr", uxtheme, "ptr", 136, "ptr")
+DllCall(SetPreferredAppMode, "int", 1) ; Dark
+DllCall(FlushMenuThemes)
 
 Menu Case, Add, &UPPERCASE, CCase ; 1
 Menu Case, Add, &lowercase, CCase ; 2
@@ -28,15 +34,15 @@ Menu Utilities, Add, &Calculate, MenuHandler ; 3
 Menu Utilities, Add, &Translate, MenuHandler ; 4
 Menu Case, Add, Utilities, :Utilities ; 9
 
-Menu, Case, Icon, &UPPERCASE, icons\uppercase16.png,, 0
-Menu, Case, Icon, &lowercase, icons\lowercase16.png,, 0
-Menu, Case, Icon, &Title Case, icons\titlecase16.png,, 0
-Menu, Case, Icon, &Reverse, icons\reverse.png,, 0
-Menu, Case, Icon, &aLt cApS case, icons\alternate.png,, 0
-Menu, Case, Icon, &Stop. Case., icons\period.png,, 0
-Menu, Case, Icon, Utilities, icons\utilities.png,, 0
-Menu, Utilities, Icon, &Morse, icons\morse-code.png,, 0
-Menu, Utilities, Icon, &Un-Morse, icons\english.png,, 0
+Menu, Case, Icon, &UPPERCASE, icons\upperwhite.png,, 0
+Menu, Case, Icon, &lowercase, icons\lowerwhite.png,, 0
+Menu, Case, Icon, &Title Case, icons\titlewhite.png,, 0
+Menu, Case, Icon, &Reverse, icons\reversewhite.png,, 0
+Menu, Case, Icon, &aLt cApS case, icons\alternatewhite.png,, 0
+Menu, Case, Icon, &Stop. Case., icons\periodwhite.png,, 0
+Menu, Case, Icon, Utilities, icons\utilitieswhite.png,, 0
+Menu, Utilities, Icon, &Morse, icons\morse-codewhite.png,, 0
+Menu, Utilities, Icon, &Un-Morse, icons\englishwhite.png,, 0
 Menu, Utilities, Icon, &Calculate, icons\calculator.png,, 0
 Menu, Utilities, Icon, &Translate, icons\translate.png,, 0
 
