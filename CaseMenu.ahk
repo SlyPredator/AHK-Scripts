@@ -15,17 +15,16 @@ GroupAdd All
 Menu Case, Add, &UPPERCASE, CCase ; 1
 Menu Case, Add, &lowercase, CCase ; 2
 Menu Case, Add, &Title Case, CCase ; 3
-Menu Case, Add, &Sentence case, CCase ; 4
-Menu Case, Add ; 5  -----> Line Break
-Menu Case, Add, &aLt cApS case, CCase ; 6
-Menu Case, Add, &Stop. Case., CCase ; 7
-Menu Case, Add, &Reverse, CCase ; 8
-Menu Case, Add ; 9  -----> Line Break
-   Menu Utilities, Add, &Morse, MenuHandler ; 1
-   Menu Utilities, Add, &Un-Morse, MenuHandler ; 2
-   Menu Utilities, Add, &Calculate, MenuHandler ; 3
-   Menu Utilities, Add, &Translate, MenuHandler ; 4
-Menu Case, Add, Utilities, :Utilities ; 10
+Menu Case, Add ; 4  -----> Line Break
+Menu Case, Add, &aLt cApS case, CCase ; 5
+Menu Case, Add, &Stop. Case., CCase ; 6
+Menu Case, Add, &Reverse, CCase ; 7
+Menu Case, Add ; 8  -----> Line Break
+Menu Utilities, Add, &Morse, MenuHandler ; 1
+Menu Utilities, Add, &Un-Morse, MenuHandler ; 2
+Menu Utilities, Add, &Calculate, MenuHandler ; 3
+Menu Utilities, Add, &Translate, MenuHandler ; 4
+Menu Case, Add, Utilities, :Utilities ; 9
 
 Menu, Case, Icon, &UPPERCASE, D:\Icons\uppercase16.png,, 0
 Menu, Case, Icon, &lowercase, D:\Icons\lowercase16.png,, 0
@@ -61,13 +60,7 @@ CCase:
       StringLower, TempText, TempText, T
       PutText(TempText)
    }
-   Else If (A_ThisMenuItemPos = 4)
-   {
-      StringLower, TempText, TempText
-      TempText := RegExReplace(TempText, "((?:^|[.!?]\s+)[a-z])", "$u1")
-      PutText(TempText)
-   }
-   Else If (A_ThisMenuItemPos = 6)
+   Else If (A_ThisMenuItemPos = 5)
    {
       result := ""
       Loop, Parse, % TempText
@@ -75,12 +68,12 @@ CCase:
       TempText := result
       PutText(TempText)
    }
-   Else if (A_ThisMenuItemPos = 7)
+   Else if (A_ThisMenuItemPos = 6)
    {
       TempText := RegExReplace(TempText, "[ ]", ". ")
       PutText(TempText)
    }
-   Else If (A_ThisMenuItemPos = 8)
+   Else If (A_ThisMenuItemPos = 7)
    {
       Temp2 =
       StringReplace, TempText, TempText, `r`n, % Chr(29), All
@@ -135,16 +128,17 @@ MenuHandler:
       Clipboard := SavedClip
       Return MyText
    }
+Return
 
-   ; Pastes text from a variable while preserving the clipboard.
-   PutText(MyText)
-   {
-      SavedClip := ClipboardAll 
-      Clipboard = ; For better compatability
-      Sleep 20 ; with Clipboard History
-      Clipboard := MyText
-      Send ^v
-      Sleep 100
-      Clipboard := SavedClip
-      Return
-   }
+; Pastes text from a variable while preserving the clipboard.
+PutText(MyText)
+{
+   SavedClip := ClipboardAll 
+   Clipboard = ; For better compatability
+   Sleep 20 ; with Clipboard History
+   Clipboard := MyText
+   Send ^v
+   Sleep 100
+   Clipboard := SavedClip
+Return
+}
