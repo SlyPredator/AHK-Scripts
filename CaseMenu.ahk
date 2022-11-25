@@ -27,6 +27,18 @@ Menu Case, Add ; 9  -----> Line Break
    Menu Utilities, Add, &Translate, MenuHandler ; 4
 Menu Case, Add, Utilities, :Utilities ; 10
 
+Menu, Case, Icon, &UPPERCASE, D:\Icons\uppercase16.png,, 0
+Menu, Case, Icon, &lowercase, D:\Icons\lowercase16.png,, 0
+Menu, Case, Icon, &Title Case, D:\Icons\titlecase16.png,, 0
+Menu, Case, Icon, &Reverse, D:\Icons\reverse.png,, 0
+Menu, Case, Icon, &aLt cApS case, D:\Icons\alternate.png,, 0
+Menu, Case, Icon, &Stop. Case., D:\Icons\period.png,, 0
+Menu, Case, Icon, Utilities, D:\Icons\utilities.png,, 0
+Menu, Utilities, Icon, &Morse, D:\Icons\morse-code.png,, 0
+Menu, Utilities, Icon, &Un-Morse, D:\Icons\english.png,, 0
+Menu, Utilities, Icon, &Calculate, D:\Icons\calculator.png,, 0
+Menu, Utilities, Icon, &Translate, D:\Icons\translate.png,, 0
+
 ^CapsLock::
    GetText(TempText)
    If NOT ERRORLEVEL
