@@ -137,9 +137,12 @@ Return
 ::whyre::why are
 ::whatd::what did
 ::whyd::why did
-:?:-name::Navneeth Mahadevan
 ::srsly::seriously
-::rvcli::java -jar revanced-cli-all.jar -b revanced-patches.jar -m integrations.apk -a youtube.apk -o out.apk --experimental > output.txt 2>&1 && type output.txt && adb uninstall app.revanced.android.youtube & adb install out.apk
+::heres::here's
+::yall::y'all
+::urs::yours
+::shant::shan't
+::rvcli::java -jar revanced-cli-all.jar -b revanced-patches.jar -m integrations.apk -a youtube.apk -o out.apk --experimental
 ::asciipy::py main.py --file images.jpeg --cols 120
 
 ; Subscripts
