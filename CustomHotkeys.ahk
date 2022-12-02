@@ -11,7 +11,8 @@
 		Alt + s
 		Alt + t
 		Alt + b
-		Alt + g 
+		Alt + g
+        Alt + n
 		
 */
 
@@ -47,6 +48,18 @@ run ms-settings:sound
 sleep, 1000
 send {Tab 10}
 send {Space}
+Return
+-----------------------------------------------------------------------------------------------
+
+; Night Light Toggle
+
+!n::
+run ms-settings:nightlight
+sleep, 700
+send {Tab 3}
+send {Space}
+if WinExist("Settings")
+    WinClose 
 Return
 -----------------------------------------------------------------------------------------------
 
@@ -142,6 +155,7 @@ Return
 ::yall::y'all
 ::urs::yours
 ::shant::shan't
+::wheres::where's
 ::rvcli::java -jar revanced-cli-all.jar -b revanced-patches.jar -m integrations.apk -a youtube.apk -o out.apk --experimental
 ::asciipy::py main.py --file images.jpeg --cols 120
 
