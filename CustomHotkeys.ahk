@@ -1,20 +1,24 @@
 #NoTrayIcon
 #SingleInstance force
 
+-----------------------------------------------------------------------------------------------
 /*
 
 	OCCUPIED HOTKEYS : 
 		
-		F2
-		@@
-		@!
-		Alt + s
-		Alt + t
-		Alt + b
-		Alt + g
-        	Alt + n
-		
+		F2 - Autohide Taskbar Toggle
+		@@ - Email
+		@! - Email
+		Alt + s - Volume Mixer
+		Alt + t - Google Translate in browser
+		Alt + b - Wallpaper Slideshow Toggle
+		Alt + g - Select Text and Search in Bing
+        	Alt + n - Night Light Toggle
+        	R-Alt + Space - Blank Text Box
+		Double Space(Slow) - Period + space
+        	Mouse Up/Down/Click/Double Click - Volume Controls (ONLY ON TASKBAR!)
 */
+-----------------------------------------------------------------------------------------------
 
 ; TaskBar Hide
 
