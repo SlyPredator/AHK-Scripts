@@ -12,7 +12,7 @@
 		Alt + t
 		Alt + b
 		Alt + g
-        Alt + n
+        	Alt + n
 		
 */
 
@@ -296,6 +296,13 @@ PutText(MyText)
    Return
 }
 Return 
+-----------------------------------------------------------------------------------------------
+
+; Blank entry area
+
+RAlt & Space::
+InputBox, UserInput, Text Box, , , 300, 100
+Return
 -----------------------------------------------------------------------------------------------
 
 ;Change volume using scroll wheel over taskbar
