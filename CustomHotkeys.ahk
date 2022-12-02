@@ -310,9 +310,14 @@ WheelDown::
 Send {Volume_Down}
 return
 
-;MButton::
-;Send {Volume_Mute}
-;return
+MButton::
+Send {Volume_Mute}
+return
+
+~LButton:: 
+If (A_TimeSincePriorHotkey<400) and (A_PriorHotkey="~LButton")
+ SendInput, {Media_Next}
+Return
 
 MouseIsOver(WinTitle) {
     MouseGetPos,,, Win
