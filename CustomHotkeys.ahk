@@ -16,7 +16,7 @@
         	Alt + n - Night Light Toggle
         	R-Alt + Space - Blank Text Box
 		Double Space(Slow) - Period + space
-        	Mouse Up/Down/Click/Double Click - Volume Controls (ONLY ON TASKBAR!)
+        	Mouse Up/Down/Click/Double Click/Triple Click - Volume Controls (ONLY ON TASKBAR!)
 */
 -----------------------------------------------------------------------------------------------
 
@@ -325,9 +325,29 @@ MButton::
 Send {Volume_Mute}
 return
 
-~LButton:: 
-If (A_TimeSincePriorHotkey<400) and (A_PriorHotkey="~LButton")
- SendInput, {Media_Next}
+~LButton::
+if quickclicks > 0
+{
+    quickclicks += 1
+    Return
+}
+
+quickclicks = 1
+SetTimer, TheKey, 600
+Return
+
+TheKey:
+SetTimer, TheKey, off
+
+if quickclicks = 3 ; The key was pressed thrice   
+   {
+   SendInput, {Media_Prev}
+   }
+if quickclicks = 2 ; The key was pressed twice   
+	{
+	SendInput, {Media_Next}
+	}
+quickclicks = 0
 Return
 
 MouseIsOver(WinTitle) {
