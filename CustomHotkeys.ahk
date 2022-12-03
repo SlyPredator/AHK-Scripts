@@ -9,11 +9,12 @@
 		F2 - Autohide Taskbar Toggle
 		@@ - Email
 		@! - Email
-		Alt + s - Volume Mixer
-		Alt + t - Google Translate in browser
-		Alt + b - Wallpaper Slideshow Toggle
+        	Alt + b - Wallpaper Slideshow Toggle
 		Alt + g - Select Text and Search in Bing
         	Alt + n - Night Light Toggle
+		Alt + s - Spotify Web 
+		Alt + t - Google Translate Web
+        	Alt + v - Volume Mixer
         	R-Alt + Space - Blank Text Box
 		Double Space(Slow) - Period + space
         	Mouse Up/Down/Click/Double Click/Triple Click - Volume Controls (ONLY ON TASKBAR!)
@@ -35,19 +36,15 @@ KeyWait, % A_ThisHotkey
 Return
 -----------------------------------------------------------------------------------------------
 
-; Email ID
+; Email IDs
 
 :*:@@::navneethmahadevan@gmail.com 
------------------------------------------------------------------------------------------------
-
-; Email ID
-
 :*:@!::navneethmahadevan@hotmail.com
 -----------------------------------------------------------------------------------------------
 
-; Per-App Sound Control
+; Volume Mixer
 
-!s::
+!v::
 run ms-settings:sound
 sleep, 1000
 send {Tab 10}
@@ -83,6 +80,13 @@ send {Tab 2}
 send {Space}
 send {Down 2}
 send {Space}
+Return
+-----------------------------------------------------------------------------------------------
+
+; Spotify Web
+
+!s::
+Run, "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" https://open.spotify.com/, , Max
 Return
 -----------------------------------------------------------------------------------------------
 
@@ -162,6 +166,7 @@ Return
 ::wheres::where's
 ::rvcli::java -jar revanced-cli-all.jar -b revanced-patches.jar -m integrations.apk -a youtube.apk -o out.apk --experimental
 ::asciipy::py main.py --file images.jpeg --cols 120
+-----------------------------------------------------------------------------------------------
 
 ; Subscripts
 
@@ -309,7 +314,7 @@ InputBox, UserInput, Text Box, , , 300, 100
 Return
 -----------------------------------------------------------------------------------------------
 
-;Change volume using scroll wheel over taskbar
+; Volume/Media controls with scroll actions on taskbar 
 
 #If MouseIsOver("ahk_class Shell_TrayWnd")
 
